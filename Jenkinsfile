@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        PYTHON_EXE = 'D:\CodeWithHarry python\VidSnapAI\Reel_Make_app\venv\Scripts\python.exe'
+        PYTHON_EXE = 'C:\\Users\\ap727\\anaconda3\\python.exe'
     }
 
     stages {
