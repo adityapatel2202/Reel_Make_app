@@ -1,16 +1,20 @@
 pipeline {
     agent any
 
+    environment {
+        PYTHON_EXE = 'D:\CodeWithHarry python\VidSnapAI\Reel_Make_app\venv\Scripts\python.exe'
+    }
+
     stages {
         stage('Install Dependencies') {
             steps {
-                bat 'py -m pip install -r requirements.txt'
+                bat '"%PYTHON_EXE%" -m pip install -r requirements.txt'
             }
         }
 
         stage('Run Tests') {
             steps {
-                bat 'py -m pytest'
+                bat '"%PYTHON_EXE%" -m pytest'
             }
         }
 
