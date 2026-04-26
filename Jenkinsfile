@@ -2,12 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Code') {
-            steps {
-                git 'https://github.com/adityapatel2202/Reel_Make_app.git'
-            }
-        }
-        
         stage('Install Dependencies') {
             steps {
                 bat 'pip install -r requirements.txt'
@@ -28,7 +22,11 @@ pipeline {
 
         stage('Run Docker Container') {
             steps {
-                bat 'docker run -d -p 5000:5000 --name reel-make-app reel-make-app'
+                bat '''
+                docker stop reel-make-app || exit 0
+                docker rm reel-make-app || exit 0
+                docker run -d -p 5000:5000 --name reel-make-app reel-make-app
+                '''
             }
         }
     }
